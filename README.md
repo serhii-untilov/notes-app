@@ -11,7 +11,7 @@ computer.
 - [x] Platform: Electron (32.1 and higher)
 - [x] Programming Language: TypeScript (5.6 and higher)
 - [x] UI Library: React (18.3.1 and higher)
-- [ ] Text Editor Library: @tiptap/react (2.7 and higher) - Can also include the starter-kit.
+- [x] Text Editor Library: @tiptap/react (2.7 and higher) - Can also include the starter-kit.
 - [ ] Testing: Vitest (2.1 and higher) and React Testing Library (16.0 and higher)
 - [ ] Security: Implement robust security measures to mitigate potential vulnerabilities inherent in Electron-based applications.
 

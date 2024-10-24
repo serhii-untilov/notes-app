@@ -48,6 +48,9 @@
   "license": "MIT",
   "dependencies": {
     "@fontsource/caveat": "^5.1.0",
+    "@tiptap/pm": "^2.9.1",
+    "@tiptap/react": "^2.9.1",
+    "@tiptap/starter-kit": "^2.9.1",
     "electron-squirrel-startup": "^1.0.1",
     "postcss": "^8.4.47",
     "postcss-loader": "^8.1.1",

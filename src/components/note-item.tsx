@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Note } from "../types";
+import Tiptap from "../utils/Tiptap";
 
 type Props = {
     note: Note;
@@ -21,10 +22,10 @@ export function NoteItem(props: Props) {
         "flex border-solid border-2 rounded-lg w-full",
         note.title ? "border-gray-500" : "border-gray-300"
     ].join(' ')} >
-        <div className="w-full">
-            <div className="w-full flex">
+        <div className="w-full m-2">
+            <div className="w-full flex mb-2">
                 <input
-                    className="m-2 w-full font-bold"
+                    className="w-full font-bold"
                     type="text"
                     id="title"
                     name="title"
@@ -34,23 +35,16 @@ export function NoteItem(props: Props) {
                     onChange={onChangeTitle}
                 />
                 <button
-                    className="mr-2 text-red-500 flex-none"
+                    className="text-red-500 flex-none w-6"
                     onClick={() => props.remove(note.id)}>
                     &#x2717;
                 </button>
             </div>
-            <hr className={["border-solid border-1", note.title ? "border-gray-500" : "border-gray-300"].join(' ')} />
-            <div className="w-full flex br-green-50">
-                <textarea
-                    className="w-full m-2"
-                    id="body"
-                    name="body"
-                    required
-                    value={note.content}
-                    placeholder="Write something..."
-                    onChange={onChangeContent}
-                />
+            <hr className={["border-solid border-1 mb-2", note.title ? "border-gray-500" : "border-gray-300"].join(' ')} />
+            <div className="w-full flex br-green-50 min-h-12">
+                <Tiptap content={note.content ?? ''} />
             </div>
+
         </div>
 
 
