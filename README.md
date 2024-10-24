@@ -17,4 +17,5 @@ computer.
 
 ## References
 
-- [Build a cross-platform desktop app with electron and react typescript, tailwind css](https://dev.to/phamquyetthang/build-a-cross-platform-desktop-app-with-electron-and-react-typescript-tailwind-css-39k0)
+- [**Electron** - Build a cross-platform desktop app with electron and react typescript, tailwind css](https://dev.to/phamquyetthang/build-a-cross-platform-desktop-app-with-electron-and-react-typescript-tailwind-css-39k0)
+- [**React** - Tiptap Editor Docs](https://tiptap.dev/docs/editor/getting-started/install/react)
