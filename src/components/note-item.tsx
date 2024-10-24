@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Note } from "../types";
-import Tiptap from "../utils/Tiptap";
+import Tiptap from "../editor/Tiptap";
 
 type Props = {
     note: Note;
@@ -42,7 +42,7 @@ export function NoteItem(props: Props) {
             </div>
             <hr className={["border-solid border-1 mb-2", note.title ? "border-gray-500" : "border-gray-300"].join(' ')} />
             <div className="w-full flex br-green-50 min-h-12">
-                <Tiptap content={note.content ?? ''} />
+                <Tiptap content={note.content} />
             </div>
 
         </div>
