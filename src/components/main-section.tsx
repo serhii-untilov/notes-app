@@ -7,7 +7,7 @@ export function MainSection() {
     const { notes, add, update, remove } = useNoteList();
 
     return <>
-        <div className='w-full'>
+        <div className='w-full h-5/6 text-slate-700'>
             <div className="flex justify-end mb-4">
                 <CreateNewNote add={add} />
             </div>

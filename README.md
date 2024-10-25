@@ -15,6 +15,11 @@ computer.
 - [ ] Testing: Vitest (2.1 and higher) and React Testing Library (16.0 and higher)
 - [ ] Security: Implement robust security measures to mitigate potential vulnerabilities inherent in Electron-based applications.
 
+## Result
+
+![Screenshot-1](./screenshots/Screenshot-1.png)
+![Screenshot-2](./screenshots/Screenshot-2.png)
+
 ## References
 
 - [**Electron** - Build a cross-platform desktop app with electron and react typescript, tailwind css](https://dev.to/phamquyetthang/build-a-cross-platform-desktop-app-with-electron-and-react-typescript-tailwind-css-39k0)

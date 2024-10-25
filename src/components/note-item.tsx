@@ -16,9 +16,9 @@ export function NoteItem(props: Props) {
         props.update({ ...note, title: e.target.value });
     }
 
-    const onChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setNote({ ...note, content: e.target.value });
-        props.update({ ...note, content: e.target.value });
+    const onChangeContent = (content: string) => {
+        setNote({ ...note, content });
+        props.update({ ...note, content });
     }
 
     return <div className={[
@@ -28,7 +28,7 @@ export function NoteItem(props: Props) {
         <div className="w-full m-2">
             <div className="w-full flex mb-2">
                 <input
-                    className="w-full font-bold"
+                    className="w-full font-bold text-xl"
                     type="text"
                     id="title"
                     name="title"
@@ -45,7 +45,7 @@ export function NoteItem(props: Props) {
             </div>
             <hr className={["border-solid border-1 mb-2", note.title ? "border-gray-500" : "border-gray-300"].join(' ')} />
             <div className="w-full flex br-green-50 min-h-12">
-                <Tiptap content={note.content} />
+                <Tiptap content={note.content} update={onChangeContent} />
             </div>
 
         </div>
