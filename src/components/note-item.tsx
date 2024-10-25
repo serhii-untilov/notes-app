@@ -4,7 +4,8 @@ import Tiptap from "../editor/Tiptap";
 
 type Props = {
     note: Note;
-    remove: any;
+    update: (note: Note) => void;
+    remove: (note: Note) => void;
 }
 
 export function NoteItem(props: Props) {
@@ -12,10 +13,12 @@ export function NoteItem(props: Props) {
 
     const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNote({ ...note, title: e.target.value });
+        props.update({ ...note, title: e.target.value });
     }
 
     const onChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setNote({ ...note, content: e.target.value });
+        props.update({ ...note, content: e.target.value });
     }
 
     return <div className={[
@@ -36,7 +39,7 @@ export function NoteItem(props: Props) {
                 />
                 <button
                     className="text-red-500 flex-none w-6"
-                    onClick={() => props.remove(note.id)}>
+                    onClick={() => props.remove(note)}>
                     &#x2717;
                 </button>
             </div>

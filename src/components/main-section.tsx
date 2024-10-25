@@ -4,7 +4,7 @@ import { NoteList } from "./note-list";
 
 
 export function MainSection() {
-    const { notes, add, remove } = useNoteList();
+    const { notes, add, update, remove } = useNoteList();
 
     return <>
         <div className='w-full h-full'>
@@ -12,7 +12,7 @@ export function MainSection() {
                 <CreateNewNote add={add} />
             </div>
             <div className="flex justify-center h-full w-full">
-                <NoteList notes={notes} remove={remove} />
+                <NoteList {...{ notes, update, remove }} />
             </div>
         </div>
     </>

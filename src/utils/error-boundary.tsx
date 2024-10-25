@@ -1,0 +1,44 @@
+import { PropsWithChildren } from 'react';
+import { ErrorBoundary, FallbackProps, useErrorBoundary } from 'react-error-boundary';
+
+function ErrorFallback(props: FallbackProps) {
+    const { error } = props;
+    const { resetBoundary } = useErrorBoundary();
+
+    return (
+        <div role="alert">
+            <h1 style={{ margin: '1rem' }}>Something went wrong</h1>
+            <h4 style={{ color: 'red', margin: '1rem' }}>{error.message}</h4>
+            <button
+                style={{
+                    margin: '1rem',
+                    fontSize: 16,
+                    height: '2rem',
+                    width: '8rem',
+                    border: 'none',
+                    borderRadius: 4,
+                    color: '#fff',
+                    backgroundColor: '#1565c0',
+                }}
+                onClick={() => {
+                    resetBoundary();
+                }}
+            >
+                Try again
+            </button>
+        </div>
+    );
+}
+
+function logError(error: Error) {
+    console.log(error.message);
+}
+
+export function AppErrorBoundary(props: PropsWithChildren) {
+    const { children } = props;
+    return (
+        <ErrorBoundary FallbackComponent={ErrorFallback} onError={logError}>
+            {children}
+        </ErrorBoundary>
+    );
+}

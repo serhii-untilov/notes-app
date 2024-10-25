@@ -6,10 +6,11 @@ import { Note } from "../types";
 
 type Props = {
     notes: Note[];
-    remove: any;
+    update: (note: Note) => void;
+    remove: (note: Note) => void;
 }
 
-export function NoteList({ notes, remove }: Props) {
+export function NoteList({ notes, update, remove }: Props) {
 
     useEffect(() => {
         const log = () => {
@@ -25,6 +26,7 @@ export function NoteList({ notes, remove }: Props) {
                     <NoteItem
                         key={note.id}
                         note={note}
+                        update={update}
                         remove={remove}
                     />
                 ))}
