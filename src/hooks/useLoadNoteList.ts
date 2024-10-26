@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Note } from '../types';
 
 export function useLoadNoteList() {
@@ -6,6 +6,7 @@ export function useLoadNoteList() {
     const [data, setData] = useState<Note[] | null>(null);
     const [isError, setIsError] = useState(false);
     const [error, setError] = useState();
+    const isLoaded = useRef(false);
 
     useEffect(() => {
         const loadNotes = async () => {
@@ -21,7 +22,10 @@ export function useLoadNoteList() {
                 setError(error);
             }
         };
-        loadNotes();
+        if (!isLoaded.current) {
+            isLoaded.current = true;
+            loadNotes();
+        }
     }, []);
 
     return { data, isLoading, isError, error };
