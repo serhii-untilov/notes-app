@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Note } from "../types";
 import Tiptap from "../editor/Tiptap";
+import { NoteTitle } from "./note-title";
 
 type Props = {
     note: Note;
@@ -11,9 +12,9 @@ type Props = {
 export function NoteItem(props: Props) {
     const [note, setNote] = useState(props.note);
 
-    const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setNote({ ...note, title: e.target.value });
-        props.update({ ...note, title: e.target.value });
+    const onChangeTitle = (value: string) => {
+        setNote({ ...note, title: value });
+        props.update({ ...note, title: value });
     }
 
     const onChangeContent = (content: string) => {
@@ -27,16 +28,7 @@ export function NoteItem(props: Props) {
     ].join(' ')} >
         <div className="w-full m-2">
             <div className="w-full flex mb-2">
-                <input
-                    className="w-full font-bold text-xl"
-                    type="text"
-                    id="title"
-                    name="title"
-                    required
-                    value={note.title}
-                    placeholder="Enter note title here"
-                    onChange={onChangeTitle}
-                />
+                <NoteTitle title={note.title} onChange={onChangeTitle} />
                 <button
                     className="text-red-500 flex-none w-6"
                     onClick={() => props.remove(note)}>
