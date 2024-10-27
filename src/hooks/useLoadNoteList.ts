@@ -1,32 +1,28 @@
 import { useEffect, useRef, useState } from 'react';
-import { Note } from '../types';
 
 export function useLoadNoteList() {
-    const [isLoading, setIsLoading] = useState(false);
-    const [data, setData] = useState<Note[] | null>(null);
-    const [isError, setIsError] = useState(false);
-    const [error, setError] = useState();
+    const [data, setData] = useState({
+        isLoading: true,
+        data: [],
+        isError: false,
+        error: null,
+    });
     const isLoaded = useRef(false);
 
-    useEffect(() => {
-        const loadNotes = async () => {
-            setIsLoading(true);
-            try {
-                const notes = await window.electronAPI.loadNotes();
-                setData(notes);
-                setIsLoading(false);
-                setIsError(false);
-                setError(null);
-            } catch (error) {
-                setIsError(true);
-                setError(error);
-            }
-        };
-        if (!isLoaded.current) {
-            isLoaded.current = true;
-            loadNotes();
+    const fetchData = async () => {
+        try {
+            const result = await window.electronAPI.loadNotes();
+            setData({ data: result, isLoading: false, isError: false, error: null });
+        } catch (error) {
+            setData({ data: [], isLoading: false, isError: true, error });
         }
+    };
+
+    useEffect(() => {
+        if (isLoaded.current) return;
+        isLoaded.current = true;
+        fetchData();
     }, []);
 
-    return { data, isLoading, isError, error };
+    return data;
 }
